@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import Layout from "./Pages/Layout"
-import StaticGraphs from "./Pages/StaticGraphs"
-import CustomGraphs from "./Pages/CustomGraphs"
-import NoPage from "./Pages/NoPage";
+import Layout from "./View/Pages/Layout"
+import StaticGraphs from "./View/Pages/StaticGraphs"
+import CustomGraphs from "./View/Pages/CustomGraphs"
+import NoPage from "./View/Pages/NoPage";
 
 function App() {
   return (

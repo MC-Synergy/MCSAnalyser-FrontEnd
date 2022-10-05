@@ -1,7 +1,8 @@
+import { getProductionData } from "../../Services/productionService";
+
 function StaticGraphs() {
   return (
     <div className="App">
-      Hello Static Graphs!
     </div>
   );
 }
