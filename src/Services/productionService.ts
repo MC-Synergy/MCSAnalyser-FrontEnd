@@ -2,7 +2,8 @@ import { ProductionPoint } from "../Models/DataPoints";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const BASE_URL =  'http://mcsynergy.nl/api/production'
+//const BASE_URL =  'http://mcsynergy.nl/api/production'
+const BASE_URL = 'http://localhost:8080/api/production'
 
 
 export function useProductionData(mcsSystemID: number): {data: ProductionPoint[], loading: boolean} {
