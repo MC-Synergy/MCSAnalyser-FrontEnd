@@ -1,0 +1,8 @@
+.production-graph {
+    background-color: #112c47;
+    @apply rounded-xl;
+    margin-left: 5%;
+    @apply my-12;
+    @apply w-5/12;
+    @apply inline-block;
+}
