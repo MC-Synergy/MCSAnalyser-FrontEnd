@@ -54,7 +54,7 @@ function StaticGraphs() {
   }
 
   const WoolProps: ProductionGraphProps = {
-    canvasID: "WoolGraphAccumulated",
+    canvasID: "WoolGraph",
     lineColors: {
       "minecraft:white_wool": "rgba(247, 250, 250, 1)",
       "minecraft:orange_wool": "rgba(254, 125, 20, 1)",
