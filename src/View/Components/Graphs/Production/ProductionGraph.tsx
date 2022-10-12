@@ -42,12 +42,12 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}
                             }
                         },
                         grid: {
-                            color: "#aacfd1"
+                            color: "rgba(170, 207, 209, 0.4)"
                         }
                     },
                     y: {
                         grid: {
-                            color: "#aacfd1"
+                            color: "rgba(170, 207, 209, 0.4)"
                         }
                     }
                 },
@@ -73,7 +73,7 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}
             myChart.destroy()
         }
         
-    }, [loading, mcsSystem])
+    }, [loading, mcsSystem, canvasID, lineColors])
 
     return (
         <div className="production-graph">
