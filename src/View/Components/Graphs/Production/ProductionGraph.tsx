@@ -6,6 +6,8 @@ import 'chartjs-adapter-moment';
 import { BorderColors, DataSet } from "../../../../Models/Types";
 import "../../../Styles/GraphStyles.css"
 
+const MINUTES_IN_DAY = 1440
+
 export interface ProductionGraphProps {
     canvasID: string,
     lineColors: BorderColors,
@@ -15,7 +17,7 @@ export interface ProductionGraphProps {
 
 export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}: ProductionGraphProps){
 
-    const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated);
+    const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_DAY);
     
     useEffect(() => {
         if (loading) {
@@ -38,7 +40,7 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}
                         type: 'time',
                         time: {
                             displayFormats: {
-                                hour: 'HH'
+                                hour: 'hh'
                             }
                         },
                         grid: {
@@ -54,16 +56,14 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}
                 plugins: {
                     legend: { 
                         position: 'top'
-                    },
-                    title: {
-                        display: true,
-                        text: mcsSystem.name,
-                        position: 'top',
                     }
                 },
 
             }
         }
+        const graphTitleElement = document.getElementById(canvasID+"title") as HTMLDivElement;
+        graphTitleElement.textContent = mcsSystem.name;
+
         const canvas = document.getElementById(canvasID) as HTMLCanvasElement;
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
@@ -77,6 +77,7 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated}
 
     return (
         <div className="production-graph">
+            <div id={canvasID+"title"} className='text-center mt-1'>Loading...</div>
             <canvas id={canvasID}></canvas>
         </div>
     )
