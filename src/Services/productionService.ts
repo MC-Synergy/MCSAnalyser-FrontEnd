@@ -2,9 +2,8 @@ import { BorderColors, DataSet, ItemsProduced, MCSSystem } from "../Models/Types
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-//const BASE_URL =  'http://mcsynergy.nl/api/production'
-const BASE_URL = 'http://localhost:8080/api/production'
-const SYSTEMS_API_URL = 'https://api.naamdorpboot.xyz/farms/GetFarm'
+const BASE_URL = process.env.REACT_APP_MCSA_API_URL + '/production'
+const SYSTEMS_API_URL = process.env.REACT_APP_SYSTEMS_API_URL
 
 export function createProductionGraphDataSets(itemsProduced: ItemsProduced, borderColors: BorderColors): DataSet[] {
   let datasets: DataSet[] = []
@@ -48,7 +47,7 @@ export function useProductionData(mcsSystemID: number, accumulated: boolean, tim
         }
 
         const { data: mcsaResponse } = await axios.get(BASE_URL + '/get-by-system-id', {params: params})
-        const { data: systemDataResponse } = await axios.get(SYSTEMS_API_URL, {params: {FarmID: mcsSystemID}}) 
+        const { data: systemDataResponse } = await axios.get(SYSTEMS_API_URL + '/get-system', {params: {SystemID: mcsSystemID}}) 
         setData({
           id: mcsSystemID,
           name: systemDataResponse.Name,

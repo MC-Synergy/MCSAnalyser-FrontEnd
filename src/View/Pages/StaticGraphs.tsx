@@ -68,7 +68,7 @@ function StaticGraphs() {
     mcsSystemID: 10,
     accumulated: false
   }
-
+    
   return (
     <div id="staticGraphs">
       <ProductionGraph {...MelonPumpkinAccumulatedProps}></ProductionGraph>
