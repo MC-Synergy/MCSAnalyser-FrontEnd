@@ -1,0 +1,13 @@
+version: '3.8'
+
+name: MCSA-FrontEnd
+
+services:
+  mcsa-front-end:
+    container_name: MCSA-FrontEnd
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: mcsa-frontend:latest
+    ports: 
+      - 80:3000
