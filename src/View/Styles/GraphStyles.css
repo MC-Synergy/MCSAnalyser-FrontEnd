@@ -1,8 +1,20 @@
 .production-graph {
     background-color: #112c47;
     @apply rounded-xl;
-    margin-left: 5%;
     @apply my-12;
-    @apply w-5/12;
-    @apply inline-block;
+}
+
+@media only screen and (orientation: landscape) {
+    .production-graph {
+        margin-left: 5%;
+        @apply w-5/12;
+        @apply inline-block;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .production-graph {
+        @apply mx-auto;
+        @apply w-11/12;
+    }
 }

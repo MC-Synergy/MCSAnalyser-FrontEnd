@@ -7,12 +7,12 @@ interface Props {
 
 function NavBarItem({itemName, linkTo}: Props) {
 
-    let itemStyles = 'relative text-2xl m-10 hover:underline'
+    let itemStyles = 'text-2xl m-10 hover:underline'
     let activeItemStyles = itemStyles + ' underline'
     
     return (
         <>
-        <div className = "inline">
+        <div className = "inline-block">
             <NavLink
                 to={linkTo} 
                 className={({ isActive }) =>
