@@ -11,6 +11,17 @@ function StaticGraphs() {
     accumulated: true
   }
 
+  const MelonPumpkinAverageProps: ProductionGraphProps = {
+    canvasID: "MelonPumpkinAverageGraph",
+    lineColors: {
+      "minecraft:melon": "rgba(133, 139, 28, 1)",
+      "minecraft:pumpkin": "rgba(220, 136, 30, 1)"
+    },
+    mcsSystemID: 12,
+    accumulated: false,
+    intervalAsMinutes: 60
+  }
+
   const MelonPumpkinProps: ProductionGraphProps = {
     canvasID: "MelonPumpkinGraph",
     lineColors: {
@@ -66,12 +77,13 @@ function StaticGraphs() {
       "minecraft:black_wool": "rgba(21, 22, 26, 1)"
     },
     mcsSystemID: 10,
-    accumulated: false
+    accumulated: false,
   }
-    
+
   return (
     <div id="staticGraphs">
       <ProductionGraph {...MelonPumpkinAccumulatedProps}></ProductionGraph>
+      <ProductionGraph {...MelonPumpkinAverageProps}></ProductionGraph>
       <ProductionGraph {...MelonPumpkinProps}></ProductionGraph>
       <ProductionGraph {...WoolAccumulatedProps}></ProductionGraph>
       <ProductionGraph {...WoolProps}></ProductionGraph>
