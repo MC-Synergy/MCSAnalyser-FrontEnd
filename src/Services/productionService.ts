@@ -60,7 +60,6 @@ export function useProductionData(mcsSystemID: number, accumulated: boolean, tim
           name: systemDataResponse.Name,
           itemsProduced: mcsaResponse
         } as MCSSystem);
-        console.log(mcsaResponse)
         setLoading(false);
       } catch (err) {
         console.error(err)

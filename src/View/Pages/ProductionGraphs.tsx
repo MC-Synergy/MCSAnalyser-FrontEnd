@@ -1,6 +1,6 @@
 import { ProductionGraph, ProductionGraphProps } from "../Components/Graphs/Production/ProductionGraph";
 
-function StaticGraphs() {
+function ProductionGraphs() {
   const MelonPumpkinAccumulatedProps: ProductionGraphProps = {
     canvasID: "MelonPumpkinAccumulatedGraph",
     lineColors: {
@@ -91,4 +91,4 @@ function StaticGraphs() {
   )
 }
 
-export default StaticGraphs;
+export default ProductionGraphs;

@@ -2,14 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('http://fonts.cdnfonts.com/css/product-sans');
+
 ::-webkit-scrollbar {
     display: none;
 }
 
+@media only screen and (orientation: portrait) {
+  .logo {
+    @apply hidden;
+  }
+
+  .navbar-center {
+    @apply w-auto;
+    @apply float-none
+  }
+
+  .navbar-item {
+    display: block;
+  }
+
+  .navbar-right {
+    @apply w-auto;
+    @apply float-none;
+  }
+}
+
 body {
   margin: 0;
-  font-family: 'Product Sans', sans-serif;
-  background-color: #0d0d19;
-  /* background-color: #00000; */
+  font-family: 'Product Sans';
+  background: url("../../../public/images/MCSBackground.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
   color: white;
 }
