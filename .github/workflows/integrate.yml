@@ -1,0 +1,35 @@
+name: integrate
+
+on:
+  pull_request: 
+    branches: ["main", "dev"]
+  push:
+    branches: ["dev"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+        
+      - name: install dependencies
+        run: npm ci
+      
+      - name: Build code
+        run: npm run build
+  lint:
+    runs-on: self-hosted
+    steps:
+      - name: Super-Linter
+        uses: github/super-linter@v4.9.7
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  
