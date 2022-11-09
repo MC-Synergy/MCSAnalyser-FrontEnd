@@ -25,7 +25,7 @@ jobs:
         run: npm run build
       
       - name: Login to registry
-        run: echo ${{ secrets.REGISTRY_PASSWORD }} | docker login registry.mcsynergy.nl -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+        run: echo ${{ secrets.REGISTRY_PASSWORD }} | sudo docker login registry.mcsynergy.nl -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
       
       - name: Build image
         run: docker build . --file Dockerfile --tag registry.mcsynergy.nl/mcsa-frontend:latest
