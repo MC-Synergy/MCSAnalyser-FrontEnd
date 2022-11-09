@@ -25,4 +25,3 @@ jobs:
       
       - name: Push to registry
         run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
-        
