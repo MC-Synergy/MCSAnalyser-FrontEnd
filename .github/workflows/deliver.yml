@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Login to registry
-        run: echo ${{ secrets.REGISTRY_PASSWORD }} | docker login registry.mcsynergy.nl -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+        run: echo ${{ secrets.REGISTRY_PASSWORD }} | sudo docker login registry.mcsynergy.nl -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
       
       - name: Build image
-        run: docker build . --file Dockerfile --tag registry.mcsynergy.nl/mcsa-frontend:latest
+        run: sudo docker build . --file Dockerfile --tag registry.mcsynergy.nl/mcsa-frontend:latest
       
       - name: Push to registry
-        run: docker push registry.mcsynergy.nl/mcsa-frontend:latest
+        run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
         
