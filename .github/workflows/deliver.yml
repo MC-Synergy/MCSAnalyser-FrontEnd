@@ -4,6 +4,7 @@ name: Deliver
 on: 
   push:
     branches: ["main"]
+  pull_request_review: submitted
   workflow_dispatch:
 
 jobs:
