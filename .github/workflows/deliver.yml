@@ -20,8 +20,8 @@ jobs:
       
       - name: Build image
         run: >
-          sudo docker build . --file Dockerfile 
-          --tag registry.mcsynergy.nl/mcsa-frontend:latest'
+          sudo docker build . --file Dockerfile
+          --tag registry.mcsynergy.nl/mcsa-frontend:latest
       
       - name: Push to registry
         run: sudo docker push registry.mcsynergy.nl/mcsa-frontend:latest
