@@ -1,0 +1,34 @@
+name: Deploy
+
+on: 
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  Docker:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+        
+      - name: install dependencies
+        run: npm ci
+      
+      - name: Build code
+        run: npm run build
+      
+      - name: Login to registry
+        run: echo ${{ secrets.REGISTRY_PASSWORD }} | docker login registry.mcsynergy.nl -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+      
+      - name: Build image
+        run: docker build . --file Dockerfile --tag registry.mcsynergy.nl/mcsa-frontend:latest
+      
+      - name: Push to registry
+        
