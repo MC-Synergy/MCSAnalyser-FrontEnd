@@ -31,4 +31,5 @@ jobs:
         run: docker build . --file Dockerfile --tag registry.mcsynergy.nl/mcsa-frontend:latest
       
       - name: Push to registry
+        run: docker push registry.mcsynergy.nl/mcsa-frontend:latest
         
