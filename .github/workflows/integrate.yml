@@ -26,12 +26,5 @@ jobs:
       
       - name: Build code
         run: npm run build
-  lint:
-    runs-on: self-hosted
-    steps:
-      - name: Super-Linter
-        uses: github/super-linter@v4.9.7
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         
   
