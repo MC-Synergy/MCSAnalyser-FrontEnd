@@ -6,7 +6,7 @@ function Layout () {
         <>
             <NavBar />
             <Outlet />
-            <div>I Love github actions!</div>
+            <div>This is a watchtower test!</div>
         </>
     )
 }
