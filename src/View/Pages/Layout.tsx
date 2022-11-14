@@ -6,7 +6,6 @@ function Layout () {
         <>
             <NavBar />
             <Outlet />
-            <div>This is another watchtower test!</div>
         </>
     )
 }

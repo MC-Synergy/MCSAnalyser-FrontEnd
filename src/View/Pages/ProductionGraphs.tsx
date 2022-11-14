@@ -2,6 +2,7 @@ import { ProductionGraph, ProductionGraphProps } from "../Components/Graphs/Prod
 
 function ProductionGraphs() {
   const MelonPumpkinAccumulatedProps: ProductionGraphProps = {
+    graphTitle: "Total Harvested Melons and Pumpkins",
     canvasID: "MelonPumpkinAccumulatedGraph",
     lineColors: {
       "minecraft:melon": "rgba(133, 139, 28, 1)",
@@ -12,6 +13,7 @@ function ProductionGraphs() {
   }
 
   const MelonPumpkinAverageProps: ProductionGraphProps = {
+    graphTitle: "Average Harvested Melons and Pumpkins",
     canvasID: "MelonPumpkinAverageGraph",
     lineColors: {
       "minecraft:melon": "rgba(133, 139, 28, 1)",
@@ -23,6 +25,7 @@ function ProductionGraphs() {
   }
 
   const MelonPumpkinProps: ProductionGraphProps = {
+    graphTitle: "Harvested Melons and Pumpkins per Round",
     canvasID: "MelonPumpkinGraph",
     lineColors: {
       "minecraft:melon": "rgba(133, 139, 28, 1)",
@@ -33,6 +36,7 @@ function ProductionGraphs() {
   }
 
   const WoolAccumulatedProps: ProductionGraphProps = {
+    graphTitle: "Total Harvested Wool",
     canvasID: "WoolGraphAccumulated",
     lineColors: {
       "minecraft:white_wool": "rgba(247, 250, 250, 1)",
@@ -57,6 +61,7 @@ function ProductionGraphs() {
   }
 
   const WoolProps: ProductionGraphProps = {
+    graphTitle: "Harvested Wool per Round",
     canvasID: "WoolGraph",
     lineColors: {
       "minecraft:white_wool": "rgba(247, 250, 250, 1)",

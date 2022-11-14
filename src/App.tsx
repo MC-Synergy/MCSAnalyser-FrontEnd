@@ -5,7 +5,7 @@ import StorageGraphs from "./View/Pages/StorageGraphs"
 import CustomGraphs from "./View/Pages/CustomGraphs"
 import NoPage from "./View/Pages/NoPage";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -13,6 +13,7 @@ function App() {
             <Route path="/production-graphs" element={<ProductionGraphs />}/>
             <Route path="/storage-graphs" element={<StorageGraphs />} />
             <Route path="/custom-graphs" element={<CustomGraphs />}/>
+            <Route path="/about" element={<About />}/>
             <Route path="/" element={<Navigate replace={true} to="/production-graphs" />} />
             <Route path="*" element={<NoPage />} />
         </Route>
@@ -21,4 +22,7 @@ function App() {
   );
 }
 
-export default App;
+function About() {
+  window.location.replace('https://github.com/MC-Synergy/MCSAnalyser-FrontEnd#readme');
+  return null;
+}
