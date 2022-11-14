@@ -10,6 +10,7 @@ const MINUTES_IN_DAY = 1440
 const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
 
 export interface ProductionGraphProps {
+    graphTitle: string,
     canvasID: string,
     lineColors: BorderColors,
     mcsSystemID: number,
@@ -17,7 +18,7 @@ export interface ProductionGraphProps {
     intervalAsMinutes?: number
 }
 
-export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated, intervalAsMinutes}: ProductionGraphProps){
+export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes}: ProductionGraphProps){
     const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_YEAR, intervalAsMinutes);
     
     useEffect(() => {
@@ -63,8 +64,9 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated,
 
             }
         }
-        const graphTitleElement = document.getElementById(canvasID+"title") as HTMLDivElement;
-        graphTitleElement.textContent = mcsSystem.name;
+
+        const systemNameElement = document.getElementById(canvasID + "SystemNameElement") as HTMLDivElement;
+        systemNameElement.textContent = mcsSystem.name;
 
         const canvas = document.getElementById(canvasID) as HTMLCanvasElement;
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -79,7 +81,8 @@ export function ProductionGraph({canvasID, lineColors, mcsSystemID, accumulated,
 
     return (
         <div className="production-graph">
-            <div id={canvasID+"title"} className='text-center mt-1'>Loading...</div>
+            <div id={canvasID+"TitleElement"} className='text-center mt-1'>{graphTitle}</div>
+            <div id={canvasID+"SystemNameElement"} className='text-center text-sm'>Loading...</div>
             <canvas id={canvasID}></canvas>
         </div>
     )
