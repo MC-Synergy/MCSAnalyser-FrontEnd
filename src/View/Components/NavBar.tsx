@@ -1,6 +1,5 @@
 import NavBarItem from "./NavBarItem";
 import MCSAnalyserLogo from "../images/MCSAnalyserLogo.svg" 
-import { NavLink } from "react-router-dom";
 
 function NavBar(){
     return(
@@ -14,7 +13,7 @@ function NavBar(){
                 <NavBarItem linkTo="/storage-graphs" itemName="Storage" />
             </div>
             <div id="navBarRight" className="w-1/5 float-left navbar-right">
-                <NavLink to="/About" className="text-2xl hover:underline" >About</NavLink>
+                <a href="https://github.com/MC-Synergy/MCSAnalyser-FrontEnd#readme" className="text-2xl hover:underline" target="_blank" rel="noreferrer">About</a>
             </div>
         </div>
     )
