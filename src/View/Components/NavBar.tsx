@@ -3,7 +3,7 @@ import MCSAnalyserLogo from "../images/MCSAnalyserLogo.svg"
 
 function NavBar(){
     return(
-        <div id="navBar" className="text-center overflow-hidden" >
+        <div id="navBar" className="text-center overflow-hidden mt-2" >
             <div className="w-1/5 float-left logo">
                 <a href="https://portal.naamdorpboot.xyz"><img src={MCSAnalyserLogo} alt="MCSynergy Logo" className="w-52 h-auto"/></a>
             </div>
