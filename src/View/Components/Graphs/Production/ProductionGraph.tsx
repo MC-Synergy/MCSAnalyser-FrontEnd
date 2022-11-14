@@ -7,7 +7,6 @@ import { BorderColors, DataSet } from "../../../../Models/Types";
 import "../../../Styles/GraphStyles.css"
 
 const MINUTES_IN_DAY = 1440
-const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
 
 export interface ProductionGraphProps {
     graphTitle: string,
@@ -19,7 +18,7 @@ export interface ProductionGraphProps {
 }
 
 export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes}: ProductionGraphProps){
-    const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_YEAR, intervalAsMinutes);
+    const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_DAY, intervalAsMinutes);
     
     useEffect(() => {
         if (loading) {
