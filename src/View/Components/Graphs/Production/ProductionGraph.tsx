@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import {ChartConfiguration} from "chart.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createProductionGraphDataSets, useProductionData } from "../../../../Services/productionService";
 import 'chartjs-adapter-moment';
 import { BorderColors, DataSet } from "../../../../Models/Types";
@@ -18,13 +18,16 @@ export interface ProductionGraphProps {
 }
 
 export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes}: ProductionGraphProps){
-    const {data: mcsSystem, loading} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_DAY, intervalAsMinutes);
-    
+    const {data: mcsSystem, loading, refreshData} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_DAY, intervalAsMinutes);
+    const [refresh, setRefresh] = useState(true)
     useEffect(() => {
+        if (refresh) {
+            refreshData()
+        }
+        setRefresh(false)
         if (loading) {
             return
         }
-
         const datasets: DataSet[] = createProductionGraphDataSets(mcsSystem.itemsProduced, lineColors)
         const chartConfig : ChartConfiguration = {
             type: 'line',
@@ -76,11 +79,15 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
             myChart.destroy()
         }
         
-    }, [loading, mcsSystem, canvasID, lineColors])
+    }, [loading, mcsSystem, canvasID, lineColors, refresh, refreshData])
+    
+    function refreshGraph() {
+        setRefresh(true)
+    }
 
     return (
         <div className="production-graph">
-            <div id={canvasID+"TitleElement"} className='text-center mt-1'>{graphTitle}</div>
+            <div id={canvasID+"TitleElement"} className='text-center mt-1' onClick={refreshGraph}>{graphTitle}</div>
             <div id={canvasID+"SystemNameElement"} className='text-center text-sm'>Loading...</div>
             <canvas id={canvasID}></canvas>
         </div>
