@@ -1,6 +1,6 @@
 import { BorderColors, DataSet, ItemsProduced, MCSSystem } from "../Models/Types";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 const BASE_URL = process.env.REACT_APP_MCSA_API_URL + '/production'
 const SYSTEMS_API_URL = process.env.REACT_APP_SYSTEMS_API_URL
@@ -30,13 +30,13 @@ export function createProductionGraphDataSets(itemsProduced: ItemsProduced, bord
   return datasets;
 }
 
-export function useProductionData(mcsSystemID: number, accumulated: boolean, timeSpanAsMinutes?: number, intervalAsMinutes?: number): {data: MCSSystem, loading: boolean} {
+export function useProductionData(mcsSystemID: number, accumulated: boolean, timeSpanAsMinutes?: number, intervalAsMinutes?: number): {data: MCSSystem, loading: boolean, refreshData: any} {
   const [data, setData] = useState({} as MCSSystem);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const refreshData = useCallback(async () => {
       try {
+        setLoading(true);
         let params: any = {
           mcssystemid: mcsSystemID,
           accumulated: accumulated,
@@ -64,13 +64,11 @@ export function useProductionData(mcsSystemID: number, accumulated: boolean, tim
       } catch (err) {
         console.error(err)
       }
-    };
-
-    fetchData();
-  }, [mcsSystemID, accumulated, timeSpanAsMinutes, intervalAsMinutes]);
+    }, [mcsSystemID, accumulated, timeSpanAsMinutes, intervalAsMinutes]);
 
   return {
     data,
     loading,
+    refreshData
   };
 };
