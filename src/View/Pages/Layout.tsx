@@ -6,6 +6,7 @@ function Layout () {
         <>
             <NavBar />
             <Outlet />
+            <div>This is a watchtower-discord webhook test!</div>
         </>
     )
 }
