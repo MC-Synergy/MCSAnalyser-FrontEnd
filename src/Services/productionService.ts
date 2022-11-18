@@ -1,12 +1,12 @@
-import { BorderColors, DataSet, ItemsProduced, MCSSystem } from "../Models/Types";
+import { BorderColors, LineGraphDataSet, ItemsProduced, MCSSystem } from "../Models/Types";
 import axios from "axios";
 import { useCallback, useState } from "react";
 
 const BASE_URL = process.env.REACT_APP_MCSA_API_URL + '/production'
 const SYSTEMS_API_URL = process.env.REACT_APP_SYSTEMS_API_URL
 
-export function createProductionGraphDataSets(itemsProduced: ItemsProduced, borderColors: BorderColors): DataSet[] {
-  let datasets: DataSet[] = []
+export function createProductionGraphDataSets(itemsProduced: ItemsProduced, borderColors: BorderColors): LineGraphDataSet[] {
+  let datasets: LineGraphDataSet[] = []
   for (const [key, value] of Object.entries(itemsProduced)) {
     let borderColor = 'rgba(57, 89, 255, 0.8)'
 
@@ -16,7 +16,7 @@ export function createProductionGraphDataSets(itemsProduced: ItemsProduced, bord
       console.log("could not find bordercolor: " + borderColors[key] + " for key: " + key)
     }
 
-    const dataset: DataSet = {
+    const dataset: LineGraphDataSet = {
       label: key,
       data: value,
       borderColor: borderColor,

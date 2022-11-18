@@ -1,9 +1,9 @@
 import Chart from 'chart.js/auto';
-import {ChartConfiguration} from "chart.js";
+import { ChartConfiguration } from "chart.js";
 import { useEffect, useState } from "react";
 import { createProductionGraphDataSets, useProductionData } from "../../../../Services/productionService";
 import 'chartjs-adapter-moment';
-import { BorderColors, DataSet } from "../../../../Models/Types";
+import { BorderColors, LineGraphDataSet } from "../../../../Models/Types";
 import "../../../Styles/GraphStyles.css"
 
 const MINUTES_IN_DAY = 1440
@@ -28,7 +28,7 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
         if (loading) {
             return
         }
-        const datasets: DataSet[] = createProductionGraphDataSets(mcsSystem.itemsProduced, lineColors)
+        const datasets: LineGraphDataSet[] = createProductionGraphDataSets(mcsSystem.itemsProduced, lineColors)
         const chartConfig : ChartConfiguration = {
             type: 'line',
             data: {
