@@ -1,7 +1,8 @@
+import { StorageItemGraph } from "../Components/Graphs/Production/StorageItemGraph"
 function StorageGraphs() {
     return (
         <div>
-            Hello Storage Graphs!
+            <StorageItemGraph canvasID="StorageItemGraph"></StorageItemGraph>
         </div>
     )
 }
