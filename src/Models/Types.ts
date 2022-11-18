@@ -31,3 +31,16 @@ export interface BorderColors {
     //itemName : borderColor
     [itemName: string]: string 
 }
+
+export interface Item {
+    name: string
+    displayname: string
+    count: number
+    stacksize: number
+}
+
+export interface Storage {
+    items: Item[]
+    name: string
+    maxItemCount: number
+}
