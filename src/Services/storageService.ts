@@ -6,7 +6,7 @@ const STORAGE_NAME = "Storage";
 const STORAGE_API_URL = process.env.REACT_APP_STORAGE_API_URL;
 const SLOTS_IN_STORAGE = 866052;
 
-export function createStorageItemGraphDataSet(items: Item[]) : PieGraphData  {
+export function createStorageItemGraphDataSet(items: Item[]): { dataSet: PieGraphData, filledPercentage: number  }  {
   let totalUsedSlots: number = 0
   const itemNames: string[] = [];
   const itemStackCounts: number[] = [];
@@ -54,7 +54,9 @@ export function createStorageItemGraphDataSet(items: Item[]) : PieGraphData  {
     }]
   }
 
-  return dataSet
+  const filledPercentage = (totalUsedSlots / SLOTS_IN_STORAGE) * 100
+
+  return { dataSet, filledPercentage}
 }
 
 export function useStorageData() {
