@@ -1,6 +1,14 @@
-.production-graph {
+.graph {
   background-color: #112c47;
   @apply rounded-xl;
+}
+
+.storage-item-graph {
+  @apply w-4/12;
+}
+
+.production-graph {
+  background-color: #112c47;
   @apply my-12;
 }
 
@@ -9,6 +17,11 @@
     margin-left: 5%;
     @apply w-5/12;
     @apply inline-block;
+  }
+
+  .storage-item-graph {
+    @apply mx-auto;
+    @apply mt-16;
   }
 }
 
