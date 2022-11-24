@@ -50,7 +50,7 @@ export function createStorageItemGraphDataSet(items: Item[]): { dataSet: PieGrap
     datasets: [{
       label: 'Slots taken',
       data: itemStackCounts,
-      backgroundColor: ["rgba(89, 116, 29, 1)", "rgba(254, 125, 20, 1)", "rgba(56, 60, 166, 1)", "rgba(66, 72, 75, 1)", "rgba(255, 255, 255, 1)"]
+      backgroundColor: ["rgba(44, 55, 33, 1)", "rgba(143, 195, 181, 1)", "rgba(70, 105, 162, 1)", "rgba(33, 98, 146, 1)", "rgba(15, 29, 48, 1)"]
     }]
   }
 

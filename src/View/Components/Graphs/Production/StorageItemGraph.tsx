@@ -24,6 +24,11 @@ export function StorageItemGraph({ canvasID }: StorageItemGraphProps) {
           legend: {
             position: 'top'
           }
+        },
+        elements: {
+          arc: {
+            borderWidth: 1,
+          }
         }
       }
     }
