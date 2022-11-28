@@ -1,5 +1,7 @@
 import { ProductionGraph, ProductionGraphProps } from "../Components/Graphs/Production/ProductionGraph";
 
+const MINUTES_IN_DAY = 1440
+
 function ProductionGraphs() {
   const MelonPumpkinAccumulatedProps: ProductionGraphProps = {
     graphTitle: "Total Harvested Melons and Pumpkins",
@@ -9,7 +11,8 @@ function ProductionGraphs() {
       "minecraft:pumpkin": "rgba(220, 136, 30, 1)"
     },
     mcsSystemID: 12,
-    accumulated: true
+    accumulated: true,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const MelonPumpkinAverageProps: ProductionGraphProps = {
@@ -21,7 +24,8 @@ function ProductionGraphs() {
     },
     mcsSystemID: 12,
     accumulated: false,
-    intervalAsMinutes: 60
+    intervalAsMinutes: 60,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const MelonPumpkinProps: ProductionGraphProps = {
@@ -32,7 +36,8 @@ function ProductionGraphs() {
       "minecraft:pumpkin": "rgba(220, 136, 30, 1)"
     },
     mcsSystemID: 12,
-    accumulated: false
+    accumulated: false,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const WoolAccumulatedProps: ProductionGraphProps = {
@@ -57,7 +62,8 @@ function ProductionGraphs() {
       "minecraft:black_wool": "rgba(21, 22, 26, 1)"
     },
     mcsSystemID: 10,
-    accumulated: true
+    accumulated: true,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const WoolProps: ProductionGraphProps = {
@@ -83,6 +89,7 @@ function ProductionGraphs() {
     },
     mcsSystemID: 10,
     accumulated: false,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const KelpHarvestedProps: ProductionGraphProps = {
@@ -92,7 +99,8 @@ function ProductionGraphs() {
       "minecraft:kelp": "rgba(91, 170, 48)"
     },
     mcsSystemID: 6,
-    accumulated: false
+    accumulated: false,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   const KelpHarvestedAccumulatedProps: ProductionGraphProps = {
@@ -102,7 +110,8 @@ function ProductionGraphs() {
       "minecraft:kelp": "rgba(91, 170, 48)"
     },
     mcsSystemID: 6,
-    accumulated: true
+    accumulated: true,
+    timeSpanAsMinutes: MINUTES_IN_DAY
   }
 
   return (
