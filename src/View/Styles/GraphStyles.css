@@ -5,6 +5,8 @@
 
 .storage-item-graph {
   @apply w-4/12;
+  @apply mx-auto;
+  @apply mt-16;
 }
 
 .production-graph {
@@ -18,11 +20,6 @@
     @apply w-5/12;
     @apply inline-block;
   }
-
-  .storage-item-graph {
-    @apply mx-auto;
-    @apply mt-16;
-  }
 }
 
 @media only screen and (orientation: portrait) {
@@ -30,6 +27,11 @@
     @apply mt-3;
     @apply mb-4;
     @apply mx-auto;
+    @apply w-11/12;
+  }
+
+  .storage-item-graph {
+    @apply mt-8;
     @apply w-11/12;
   }
 }
