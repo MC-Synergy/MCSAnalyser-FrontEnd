@@ -6,19 +6,18 @@ import 'chartjs-adapter-moment';
 import { BorderColors, LineGraphDataSet } from "../../../../Models/Types";
 import "../../../Styles/GraphStyles.css"
 
-const MINUTES_IN_DAY = 1440
-
 export interface ProductionGraphProps {
     graphTitle: string,
     canvasID: string,
     lineColors: BorderColors,
     mcsSystemID: number,
     accumulated: boolean,
-    intervalAsMinutes?: number
+    timeSpanAsMinutes?: number,
+    intervalAsMinutes?: number,
 }
 
-export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes}: ProductionGraphProps){
-    const {data: mcsSystem, loading, refreshData} = useProductionData(mcsSystemID, accumulated, MINUTES_IN_DAY, intervalAsMinutes);
+export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes, timeSpanAsMinutes}: ProductionGraphProps){
+    const {data: mcsSystem, loading, refreshData} = useProductionData(mcsSystemID, accumulated, timeSpanAsMinutes, intervalAsMinutes);
     const [refresh, setRefresh] = useState(true)
     useEffect(() => {
         if (refresh) {
@@ -44,7 +43,7 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
                         type: 'time',
                         time: {
                             displayFormats: {
-                                hour: 'hh'
+                                hour: 'HHu'
                             }
                         },
                         grid: {
