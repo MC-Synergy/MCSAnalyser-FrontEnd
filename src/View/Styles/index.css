@@ -12,7 +12,9 @@
 .navBar {
   @apply text-center;
   @apply overflow-hidden;
-  @apply mt-2 ;
+  @apply mt-4;
+  @apply flex;
+  @apply items-center;
 }
 
 .portalNavBarItem {
@@ -40,6 +42,10 @@
   .navbar-right {
     @apply w-auto;
     @apply float-none;
+  }
+
+  .navBar {
+    @apply block
   }
 }
 
