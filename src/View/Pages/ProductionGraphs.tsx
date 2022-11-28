@@ -113,7 +113,7 @@ function ProductionGraphs() {
       <ProductionGraph {...WoolAccumulatedProps}></ProductionGraph>
       <ProductionGraph {...KelpHarvestedAccumulatedProps}></ProductionGraph>
       <ProductionGraph {...KelpHarvestedProps}></ProductionGraph>
-      {/* <ProductionGraph {...WoolProps}></ProductionGraph> */}
+      <ProductionGraph {...WoolProps}></ProductionGraph>
     </div>
   )
 }
