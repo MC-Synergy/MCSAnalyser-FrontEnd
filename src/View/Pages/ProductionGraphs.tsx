@@ -95,14 +95,25 @@ function ProductionGraphs() {
     accumulated: false
   }
 
+  const KelpHarvestedAccumulatedProps: ProductionGraphProps = {
+    graphTitle: "Total Harvested Kelp",
+    canvasID: "TotalHarvestedKelpGraph",
+    lineColors: {
+      "minecraft:kelp": "rgba(91, 170, 48)"
+    },
+    mcsSystemID: 6,
+    accumulated: true
+  }
+
   return (
     <div id="staticGraphs">
       <ProductionGraph {...MelonPumpkinAccumulatedProps}></ProductionGraph>
       <ProductionGraph {...MelonPumpkinAverageProps}></ProductionGraph>
       <ProductionGraph {...MelonPumpkinProps}></ProductionGraph>
-      <ProductionGraph {...KelpHarvestedProps}></ProductionGraph>
       <ProductionGraph {...WoolAccumulatedProps}></ProductionGraph>
-      <ProductionGraph {...WoolProps}></ProductionGraph>
+      <ProductionGraph {...KelpHarvestedAccumulatedProps}></ProductionGraph>
+      <ProductionGraph {...KelpHarvestedProps}></ProductionGraph>
+      {/* <ProductionGraph {...WoolProps}></ProductionGraph> */}
     </div>
   )
 }
