@@ -9,10 +9,24 @@
     display: none;
 }
 
+.navBar {
+  @apply text-center;
+  @apply overflow-hidden;
+  @apply mt-2 ;
+}
+
+.portalNavBarItem {
+  @apply hidden;
+}
+
 @media only screen and (orientation: portrait) {
   .logo {
     @apply hidden;
   }
+
+  .portalNavBarItem {
+    @apply block
+  }   
 
   .navbar-center {
     @apply w-auto;
