@@ -2,9 +2,9 @@ import { BorderColors, LineGraphDataSet, ItemsProduced, MCSSystem } from "../Mod
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-//const BASE_URL = process.env.REACT_APP_MCSA_API_URL + '/production'
+const BASE_URL = process.env.REACT_APP_MCSA_API_URL + '/production'
 
-const BASE_URL = "https://api.mcsynergy.nl" + "/production"
+//const BASE_URL = "https://api.mcsynergy.nl" + "/production"
 const SYSTEMS_API_URL = process.env.REACT_APP_SYSTEMS_API_URL
 
 export function createProductionGraphDataSets(itemsProduced: ItemsProduced, borderColors: BorderColors): LineGraphDataSet[] {
