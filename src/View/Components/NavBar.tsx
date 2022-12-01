@@ -5,7 +5,7 @@ function NavBar(){
     return(
         <div id="navBar" className="navBar" >
             <div className="w-1/5 float-left logo flex justify-center">
-                <a href="https://portal.naamdorpboot.xyz"><img src={MCSAnalyserLogo} alt="MCSynergy Logo" className="w-48 h-auto" /></a>
+                <a href="https://portal.mcsynergy.nl"><img src={MCSAnalyserLogo} alt="MCSynergy Logo" className="w-48 h-auto" /></a>
             </div>
             <div id="navBarCenter" className ="w-3/5 float-left navbar-center">
                 <div className="portalNavBarItem"><NavBarItem linkTo="/portal" itemName="Portal" /></div>
