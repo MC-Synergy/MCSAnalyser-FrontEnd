@@ -9,9 +9,7 @@
       "numberOfRuns": 1
     },
     "upload": {
-      "target": "lhci",
-      "serverBaseUrl": "https:lighthouse.mcsynergy.nl",
-      "token": "99089327-fb55-4aba-ba07-b40af2ded973"
+      "target": "temporary-public-storage"
     },
     "assert": {
       "preset": "lighthouse:recommended"
