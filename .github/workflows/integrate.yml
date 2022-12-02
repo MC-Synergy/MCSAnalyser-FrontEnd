@@ -23,7 +23,7 @@ jobs:
           git config user.email "<>"
         
       - name: install dependencies
-        run: npm ci
+        run: npm ci && npm i -g http-server @lhci/cli
       
       - name: Build code
         run: npm run build
