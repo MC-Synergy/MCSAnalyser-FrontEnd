@@ -9,7 +9,7 @@ The Analyser makes it possible to analyse data produced by systems on the MCS Mi
 
 ## Where can I see the analyser in action?
 ### Players
-If you are an MCS player, please go to the [MCS Portal](https://portal.naamdorpboot.xyz) and login with your account.
+If you are an MCS player, please go to the [MCS Portal](https://portal.mcsynergy.nl) and login with your account.
 
 ### Visitors
-If you're just a visitor and don't have an MCS account, please got to the [MCS Analyser](https://mcsynergy.nl) directly to see the it in action.
+If you're just a visitor and don't have an MCS account, please got to the [MCS Analyser](https://analyser.mcsynergy.nl) directly to see the it in action.
