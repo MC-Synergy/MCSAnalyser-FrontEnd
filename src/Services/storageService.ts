@@ -62,6 +62,7 @@ export function createStorageItemGraphDataSet(items: Item[]): { dataSet: PieGrap
 export function useStorageData() {
   const [data, setData] = useState({} as Storage);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -73,16 +74,17 @@ export function useStorageData() {
           totalSlotsInStorage: SLOTS_IN_STORAGE,
 
         } as Storage);
+
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
-      setLoading(false);
     }
 
     fetchData();
   }, [])
   return { 
     data, 
-    loading 
+    loading
   };
 };
