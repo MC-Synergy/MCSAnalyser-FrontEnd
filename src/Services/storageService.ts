@@ -36,15 +36,6 @@ export function createStorageItemGraphDataSet(items: Item[]): { dataSet: PieGrap
   itemNames.push("Empty")
   itemStackCounts.push(emptySlots)
 
-  //Test
-  let totalStacks = 0
-  itemStackCounts.forEach(stackCount => {
-    totalStacks += stackCount
-  });
-  console.log("expected: " + SLOTS_IN_STORAGE)
-  console.log("actual: " + totalStacks)
-  console.log("successful: " + (SLOTS_IN_STORAGE === totalStacks))
-
   const dataSet: PieGraphData = {
     labels: itemNames,
     datasets: [{
@@ -66,7 +57,14 @@ export function useStorageData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: storageRes } = await axios.get(STORAGE_API_URL + "/get/all/grouped", { params: { sort: "highest" } })
+        const request = axios.get(STORAGE_API_URL + "/get/all/grouped", { params: { sort: "highest" }, withCredentials: true})
+        request.catch(err => {
+          if (err.response.status === 401) {
+            window.location.replace("https://portal.mcsynergy.nl")
+          }
+        })
+
+        const storageRes = (await request).data;
 
         setData({
           name: STORAGE_NAME,
