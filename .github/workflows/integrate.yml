@@ -1,5 +1,5 @@
 ---
-name: integrate
+name: Integrate
 
 on:
   pull_request: 
@@ -9,7 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Lighthouse:
+    name: Build and LHCI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +23,15 @@ jobs:
           git config user.email "<>"
         
       - name: install dependencies
-        run: npm ci
+        run: npm ci && npm i -g http-server @lhci/cli
       
       - name: Build code
         run: npm run build
+      
+      - name: run Lighthouse CI
+        env: 
+            LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+
+        run: |
+          npm install -g @lhci/cli@0.8.x
+          lhci autorun
