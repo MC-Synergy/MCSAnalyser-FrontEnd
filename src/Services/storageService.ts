@@ -60,7 +60,7 @@ export function useStorageData() {
         const request = axios.get(STORAGE_API_URL + "/get/all/grouped", { params: { sort: "highest" }, withCredentials: true})
         request.catch(err => {
           if (err.response.status === 401) {
-            window.location.replace("https://portal.mcsynergy.nl")
+            window.location.replace("https://portal.mcsynergy.nl?redirect=" + window.location)
           }
         })
 
