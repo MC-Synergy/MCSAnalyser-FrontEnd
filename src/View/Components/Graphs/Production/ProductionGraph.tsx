@@ -6,6 +6,8 @@ import 'chartjs-adapter-moment';
 import { BorderColors, LineGraphDataSet } from "../../../../Models/Types";
 import "../../../Styles/GraphStyles.css"
 
+const MS_IN_MINUTE = 60000;
+
 export interface ProductionGraphProps {
     graphTitle: string,
     canvasID: string,
@@ -28,6 +30,13 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
             return
         }
         const datasets: LineGraphDataSet[] = createProductionGraphDataSets(mcsSystem.itemsProduced, lineColors)
+        let timeSpanStart = undefined
+        if (typeof timeSpanAsMinutes == "number") {
+            console.log(timeSpanAsMinutes)
+            timeSpanStart = new Date(Date.now() - (timeSpanAsMinutes * MS_IN_MINUTE)).toString()
+            console.log(timeSpanStart)
+        }
+
         const chartConfig : ChartConfiguration = {
             type: 'line',
             data: {
@@ -48,14 +57,16 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
                         },
                         grid: {
                             color: "rgba(170, 207, 209, 0.4)"
-                        }
+                        },
+                        min: timeSpanStart,
+                        max: Date.now()
                     },
                     y: {
                         grid: {
                             color: "rgba(170, 207, 209, 0.4)"
                         },
                         min: 0
-                    }
+                    },
                 },
                 plugins: {
                     legend: { 
