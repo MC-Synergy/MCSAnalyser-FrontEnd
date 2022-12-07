@@ -29,6 +29,6 @@ function About() {
 }
 
 function Portal() {
-  window.location.replace('https://portal.naamdorpboot.xyz');
+  window.location.replace('https://portal.mcsynergy.nl');
   return null;
 }
