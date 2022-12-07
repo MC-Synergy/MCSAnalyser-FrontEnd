@@ -19,7 +19,15 @@ export interface ProductionGraphProps {
 }
 
 export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, accumulated, intervalAsMinutes, timeSpanAsMinutes}: ProductionGraphProps){
+
     const {data: mcsSystem, loading, refreshData} = useProductionData(mcsSystemID, accumulated, timeSpanAsMinutes, intervalAsMinutes);
+
+    let timeSpanStart: string | undefined = undefined
+    console.log(timeSpanAsMinutes)
+    if (typeof timeSpanAsMinutes == "number") {
+        timeSpanStart = new Date(Date.now() - (timeSpanAsMinutes * MS_IN_MINUTE)).toString()
+    }
+
     const [refresh, setRefresh] = useState(true)
     useEffect(() => {
         if (refresh) {
@@ -30,12 +38,6 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
             return
         }
         const datasets: LineGraphDataSet[] = createProductionGraphDataSets(mcsSystem.itemsProduced, lineColors)
-        let timeSpanStart = undefined
-        if (typeof timeSpanAsMinutes == "number") {
-            console.log(timeSpanAsMinutes)
-            timeSpanStart = new Date(Date.now() - (timeSpanAsMinutes * MS_IN_MINUTE)).toString()
-            console.log(timeSpanStart)
-        }
 
         const chartConfig : ChartConfiguration = {
             type: 'line',
@@ -52,8 +54,10 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
                         type: 'time',
                         time: {
                             displayFormats: {
-                                hour: 'HHu'
-                            }
+                                hour: 'HHu',
+                                minute: 'HH:mm'
+                            },
+                            tooltipFormat: 'MMM DD, YYYY, HH:mm:ss'
                         },
                         grid: {
                             color: "rgba(170, 207, 209, 0.4)"
@@ -83,16 +87,32 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
         const canvas = document.getElementById(canvasID) as HTMLCanvasElement;
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-        const myChart = new Chart(ctx, chartConfig)
+        const chart = new Chart(ctx, chartConfig)
 
         return () => {
-            myChart.destroy()
+            chart.destroy()
         }
         
-    }, [loading, mcsSystem, canvasID, lineColors, refresh, refreshData])
+    }, [loading, mcsSystem, canvasID, lineColors, refresh, refreshData, timeSpanStart])
     
     function refreshGraph() {
         setRefresh(true)
+    }
+
+    function switchTimeScale() {
+        const chart = Chart.getChart(canvasID)
+        if (chart === undefined || chart.options.scales === undefined || chart.options.scales["x"] === undefined) {
+            return
+        }
+        if (chart.options.scales["x"].min === undefined) {
+            chart.options.scales["x"].min = timeSpanStart
+            chart.options.scales["x"].max = Date.now()
+        } else {
+            chart.options.scales["x"].min = undefined
+            chart.options.scales["x"].max = undefined
+        }
+        chart.update()
+
     }
 
     return (
@@ -103,6 +123,7 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
             </svg>
             <div id={canvasID+"SystemNameElement"} className='text-center text-sm'>Loading...</div>
             <canvas id={canvasID}></canvas>
+            <button onClick={switchTimeScale} className="m-2">Change Time Span (Beta)</button>
         </div>
     )
 }
