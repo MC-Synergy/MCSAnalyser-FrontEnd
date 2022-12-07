@@ -56,6 +56,7 @@ SendProductionData("minecraft:pumpkin")
 You can submit an issue to haves some static graphs of your date added to the analyser. Make sure your issue contains:
 - The MCS System ID
 - The Graphs you want (you can take a look at the analyser for inspiration)
+- Label: Static Graph Request
 - Optional: Colors for lines/bars, this should be an RGBA Value.
 
 ## Questions
