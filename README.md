@@ -12,7 +12,7 @@ The Analyser makes it possible to analyse data produced by systems on the MCS Mi
 If you are an MCS player, please go to the [MCS Portal](https://portal.mcsynergy.nl) and login with your account.
 
 ### Visitors
-If you're just a visitor and don't have an MCS account, please got to the [MCS Analyser](https://analyser.mcsynergy.nl) directly to see the it in action.
+If you're just a visitor and don't have an MCS account, please got to the [MCS Analyser](https://analyser.mcsynergy.nl) directly to see it in action.
 
 ## How can I add my system to the analyser?
 You can add a system to the analyser by submitting an issue with the system id and the wanted graphs and adding some small pieces of code to your system: 
