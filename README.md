@@ -53,7 +53,7 @@ There is also the possibility to only send and wipe a specific item:
 SendProductionData("minecraft:pumpkin")
 ```
 ### Step 4: Submit graph request
-You can submit an issue to have some static graphs of your date added to the analyser. Make sure your issue contains:
+You can submit an issue to have some static graphs of your data added to the analyser. Make sure your issue contains:
 - The MCS System ID
 - The Graphs you want (you can take a look at the analyser for inspiration)
 - Label: Static Graph Request
