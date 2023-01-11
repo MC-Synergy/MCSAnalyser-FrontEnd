@@ -50,7 +50,7 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
                     yAxisKey: 'amountProduced'
                 },
                 scales: {
-                    x: {
+                    botx: {
                         type: 'time',
                         time: {
                             displayFormats: {
@@ -63,13 +63,32 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
                             color: "rgba(170, 207, 209, 0.4)"
                         },
                         min: timeSpanStart,
-                        max: Date.now()
+                        max: Date.now(),
+                        axis: 'x',
+                        position: 'bottom',
                     },
                     y: {
                         grid: {
                             color: "rgba(170, 207, 209, 0.4)"
                         },
                         min: 0
+                    },
+                    topx: {
+                        type: 'time',
+                        time: {
+                            displayFormats: {
+                                hour: 'HHu',
+                                minute: 'HH:mm'
+                            },
+                            tooltipFormat: 'MMM DD, YYYY, HH:mm:ss'
+                        },
+                        grid: {
+                            color: "rgba(170, 207, 209, 0.4)"
+                        },
+                        min: timeSpanStart,
+                        max: Date.now(),
+                        axis: 'x',
+                        position: 'top',
                     },
                 },
                 plugins: {
@@ -101,15 +120,24 @@ export function ProductionGraph({canvasID, graphTitle, lineColors, mcsSystemID, 
 
     function switchTimeScale() {
         const chart = Chart.getChart(canvasID)
-        if (chart === undefined || chart.options.scales === undefined || chart.options.scales["x"] === undefined) {
+        if (chart === undefined || chart.options.scales === undefined || chart.options.scales["botx"] === undefined || chart.options.scales["topx"] === undefined) {
             return
         }
-        if (chart.options.scales["x"].min === undefined) {
-            chart.options.scales["x"].min = timeSpanStart
-            chart.options.scales["x"].max = Date.now()
+        const dateNow = Date.now()
+        if (chart.options.scales["botx"].min === undefined) {
+            chart.options.scales["botx"].min = timeSpanStart
+            chart.options.scales["botx"].max = dateNow
         } else {
-            chart.options.scales["x"].min = undefined
-            chart.options.scales["x"].max = undefined
+            chart.options.scales["botx"].min = undefined
+            chart.options.scales["botx"].max = undefined
+        }
+
+        if (chart.options.scales["topx"].min === undefined) {
+            chart.options.scales["topx"].min = timeSpanStart
+            chart.options.scales["topx"].max = dateNow
+        } else {
+            chart.options.scales["topx"].min = undefined
+            chart.options.scales["topx"].max = undefined
         }
         chart.update()
 

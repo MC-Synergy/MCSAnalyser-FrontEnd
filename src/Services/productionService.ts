@@ -47,6 +47,7 @@ export function useProductionData(mcsSystemID: number, accumulated: boolean, tim
         params["datatimespan"] = timeSpanAsMinutes
       }
 
+
       if (intervalAsMinutes !== undefined) {
         params["interval"] = intervalAsMinutes
       }
